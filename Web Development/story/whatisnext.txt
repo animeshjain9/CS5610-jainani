@@ -1,2 +1,3 @@
-﻿InitialHTML.htm      1. HTML Experiment
-SecondHTML.htm		 2. CSS and JavaScript Experiment
+﻿InitialHTML.htm      1. HTML Experiments
+SecondHTML.htm		 2. CSS and JavaScript Experiments
+ThirdHTML.htm		 3. JQuery and BootStrap Experiments

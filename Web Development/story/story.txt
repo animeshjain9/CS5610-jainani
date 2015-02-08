@@ -1,3 +1,4 @@
 ﻿whatisnext.htm?whatisnext.txt   What is Next?
 InitialHTML.htm		HTML Experiment
-SecondHTML.htm		CSS and JavaScript Experiment	
+SecondHTML.htm		CSS and JavaScript Experiment
+ThirdHTML.htm		JQuery and BootStrap Experiments	

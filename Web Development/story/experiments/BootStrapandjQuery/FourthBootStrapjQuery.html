@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+
+      
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#p1").css("color", "red").slideUp(2000).slideDown(2000);
+            });
+        });
+    </script>
+
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>Bootstrap and jQuery Experiment 4</h1>
+            <h2 align="center">jQuery Chaining</h2>
+            <p id="p1">jQuery is fun!!</p>
+
+            <button>Click me</button>
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>With jQuery, you can chain together actions/methods.
+           Chaining allows us to run multiple jQuery methods (on the same element) within a single statement.
+            <p>
+                To chain an action, you simply append the action to the previous action.
+                The following example chains together the css(), slideUp(), and slideDown() methods. The "p1" element first changes to red, then it slides up, and then it slides down:
+           </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre>   $(document).ready(function () {</br>
+            $("button").click(function () {</br>
+                $("#p1").css("color", "red").slideUp(2000).slideDown(2000);</br>
+            });</br>
+        });</br></pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/BootStrapandjQuery/FourthBootStrapjQuery.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>
