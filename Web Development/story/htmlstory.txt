@@ -1,0 +1,5 @@
+﻿experiments/HTML/FirstHTMLExp.html		First HTML Experiment
+experiments/HTML/SecondHTMLExp.html		Second HTML Experiment
+experiments/HTML/ThirdHTMLExp.html		Third HTML Experiment
+experiments/HTML/FourthHTMLExp.html		Fourth HTML Experiment
+experiments/HTML/FifthHTMLExp.html		Fifth HTML Experiment
