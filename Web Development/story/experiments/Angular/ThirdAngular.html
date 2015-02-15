@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+        table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd)	{
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script>
+    function customersController($scope, $http) {
+        $http.get("http://www.w3schools.com/website/Customers_JSON.php")
+        .success(function (response) { $scope.names = response; });
+    }
+    </script>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>AngularJS Experiments 3</h1>
+            <h2 align="center">AngularJS Tables</h2>
+            <div ng-app="" ng-controller="customersController">
+
+                <table>
+                    <tr ng-repeat="x in names">
+                        <td>{{ x.Name }}</td>
+                        <td>{{ x.Country }}</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            </div>
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>The ng-repeat directive is perfect for displaying tables.
+            
+        </p>
+
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre>  div ng-app="" ng-controller="customersController" </br>
+table</br>
+tr ng-repeat="x in names"</br>
+ x.Name </br>
+ x.Country </br>
+                     function customersController($scope, $http) {</br>
+        $http.get("http://www.w3schools.com/website/Customers_JSON.php")</br>
+        .success(function (response) { $scope.names = response; });</br>
+    }          </br>
+            </br></pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/Angular/ThirdAngular.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

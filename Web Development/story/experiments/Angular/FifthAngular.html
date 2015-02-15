@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+        a, a:visited {
+	outline:none;
+	color:#389dc1;
+}
+
+a:hover{
+	text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+	display: block;
+}
+
+/*-------------------------
+	The order form
+--------------------------*/
+
+form{
+	background-color: #61a1bc;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px #ccc;
+	width: 400px;
+	padding: 35px 60px;
+	margin: 50px auto;
+}
+
+form h1{
+	color:#fff;
+	font-size:64px;
+	font-family:'Cookie', cursive;
+	font-weight: normal;
+	line-height:1;
+	text-shadow:0 3px 0 rgba(0,0,0,0.1);
+}
+
+form ul{
+	list-style:none;
+	color:#fff;
+	font-size:20px;
+	font-weight:bold;
+	text-align: left;
+	margin:20px 0 15px;
+}
+
+form ul li{
+	padding:20px 30px;
+	background-color:#e35885;
+	margin-bottom:8px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.1);
+	cursor:pointer;
+}
+
+form ul li span{
+	float:right;
+}
+
+form ul li.active{
+	background-color:#8ec16d;
+}
+
+div.total{
+	border-top:1px solid rgba(255,255,255,0.5);
+	padding:15px 30px;
+	font-size:20px;
+	font-weight:bold;
+	text-align: left;
+	color:#fff;
+}
+
+div.total span{
+	float:right;
+}
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script>
+        function OrderFormController($scope) {
+
+            // Define the model properties. The view will loop
+            // through the services array and genreate a li
+            // element for every one of its items.
+
+            $scope.services = [
+                {
+                    name: 'Web Development',
+                    price: 300,
+                    active: true
+                }, {
+                    name: 'Design',
+                    price: 400,
+                    active: false
+                }, {
+                    name: 'Integration',
+                    price: 250,
+                    active: false
+                }, {
+                    name: 'Training',
+                    price: 220,
+                    active: false
+                }
+            ];
+
+            $scope.toggleActive = function (s) {
+                s.active = !s.active;
+            };
+
+            // Helper method for calculating the total price
+
+            $scope.total = function () {
+
+                var total = 0;
+
+                // Use the angular forEach helper method to
+                // loop through the services array:
+
+                angular.forEach($scope.services, function (s) {
+                    if (s.active) {
+                        total += s.price;
+                    }
+                });
+
+                return total;
+            };
+        }
+    </script>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>AngularJS Experiments 5</h1>
+            <h2 align="center">AngularJS Filters</h2>
+            <div class="experiment-div">
+                <form ng-app ng-controller="OrderFormController">
+
+                    <h1>Services</h1>
+
+                    <ul>
+                        <!-- Loop through the services array, assign a click handler, and set or
+                remove the "active" css class if needed -->
+                        <li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}">
+                            <!-- Notice the use of the currency filter, it will format the price -->
+                            {{service.name}} <span>{{service.price | currency}}</span>
+                        </li>
+                    </ul>
+
+                    <div class="total">
+                        <!-- Calculate the total price of all chosen services. Format it as currency. -->
+                        Total: <span>{{total() | currency}}</span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            In this example, we will code an order form with a total price updated in real time, using another one of Angular’s useful features – filters. Filters let you modify models and can be chained together using the pipe character |. In the example below, I am using the currency filter, to turn a number into a properly formatted price, complete with a dollar sign and cents.
+        </p>
+
+        <p>
+            The ng-repeat binding (docs) is another useful feature of the framework. It lets you loop through an array of items and generate markup for  them. It is intelligently updated when an item is changed or deleted.
+
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre>  form ng-app ng-controller="OrderFormController"</br>
+         h1>Services</h1       </br>
+         <ul></br>
+        <!-- Loop through the services array, assign a click handler, and set or
+        remove the "active" css class if needed -->
+       li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}"</br>
+       <!-- Notice the use of the currency filter, it will format the price -->
+       {service.name} span>{service.price | currency}</span</br>
+       </li</br>
+       </ul</br>
+       div class="total"></br>
+       <!-- Calculate the total price of all chosen services. Format it as currency. -->
+       Total: span> {total() | currency}</span</br>
+                </br></br></pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/Angular/FifthAngular.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

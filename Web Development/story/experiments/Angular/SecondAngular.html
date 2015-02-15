@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script>
+    function validateCtrl($scope) {
+        $scope.user = 'Animesh Jain';
+        $scope.email = 'jain.ani@husky.neu.edu';
+    }
+    </script>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>AngularJS Experiments 2</h1>
+            <h2 align="center">AngularJS Validations</h2>
+            <div class="experiment-div">
+                <form ng-app="" ng-controller="validateCtrl"
+                      name="myForm" novalidate>
+
+                    <p>
+                        Username:<br>
+                        <input type="text" name="user" ng-model="user" required>
+                        <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                            <span ng-show="myForm.user.$error.required">Username is required.</span>
+                        </span>
+                    </p>
+
+                    <p>
+                        Email:<br>
+                        <input type="email" name="email" ng-model="email" required>
+                        <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                            <span ng-show="myForm.email.$error.required">Email is required.</span>
+                            <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                        </span>
+                    </p>
+
+                    <p>
+                        <input type="submit"
+                               ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+myForm.email.$dirty && myForm.email.$invalid">
+                    </p>
+
+                </form>
+
+            </div>
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            The AngularJS directive ng-model binds the input elements to the model.
+            The model object has two properties: user and email.
+            Because of ng-show, the spans with color:red are displayed only when user or email is $dirty and $invalid.
+        </p>
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre> 
+            form ng-app="" ng-controller="validateCtrl" </br>
+                  name="myForm" novalidate></br>
+                        Username:</br>
+            input type="text" name="user" ng-model="user" required</br>
+            span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid"</br>
+            Email:<br></br>
+            input type="email" name="email" ng-model="email" required </br>
+            span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid" </br>
+            input type="submit"</br>
+                   ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||</br>
+myForm.email.$dirty && myForm.email.$invalid"</br>                    
+                form </br>
+              </br> </pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/Angular/SecondAngular.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

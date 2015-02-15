@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+        a, a:visited {
+	outline:none;
+	color:#389dc1;
+}
+
+a:hover{
+	text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+	display: block;
+}
+
+/*-------------------------
+	The menu
+--------------------------*/
+
+nav{
+	display:inline-block;
+	margin:60px auto 45px;
+	background-color:#5597b4;
+	box-shadow:0 1px 1px #ccc;
+	border-radius:2px;
+}
+
+nav a{
+	display:inline-block;
+	padding: 18px 30px;
+	color:#fff !important;
+	font-weight:bold;
+	font-size:16px;
+	text-decoration:none !important;
+	line-height:1;
+	text-transform: uppercase;
+	background-color:transparent;
+
+	-webkit-transition:background-color 0.25s;
+	-moz-transition:background-color 0.25s;
+	transition:background-color 0.25s;
+}
+
+nav a:first-child{
+	border-radius:2px 0 0 2px;
+}
+
+nav a:last-child{
+	border-radius:0 2px 2px 0;
+}
+
+nav.home .home,
+nav.projects .projects,
+nav.services .services,
+nav.contact .contact{
+	background-color:#e35885;
+}
+
+p{
+	font-size:22px;
+	font-weight:bold;
+	color:#7d9098;
+}
+
+p b{
+	color:#ffffff;
+	display:inline-block;
+	padding:5px 10px;
+	background-color:#c4d7e0;
+	border-radius:2px;
+	text-transform:uppercase;
+	font-size:18px;
+}
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>AngularJS Experiments 4</h1>
+            <h2 align="center">AngularJS Navigation Menu</h2>
+            <div class="experiment-div">
+                <div id="main" ng-app>
+                    <!-- The navigation menu will get the value of the "active" variable as a class.
+             The $event.preventDefault() stops the page from jumping when a link is clicked. -->
+
+                    <nav class="{{active}}" ng-click="$event.preventDefault()">
+
+                        <!-- When a link in the menu is clicked, we set the active variable -->
+
+                        <a href="#" class="home" ng-click="active='home'">Home</a>
+                        <a href="#" class="projects" ng-click="active='projects'">Projects</a>
+                        <a href="#" class="services" ng-click="active='services'">Services</a>
+                        <a href="#" class="contact" ng-click="active='contact'">Contact</a>
+                    </nav>
+
+                    <!-- ng-show will show an element if the value in the quotes is truthful,
+             while ng-hide does the opposite. Because the active variable is not set
+             initially, this will cause the first paragraph to be visible. -->
+
+                    <p ng-hide="active">Please click a menu item</p>
+                    <p ng-show="active">You chose <b>{{active}}</b></p>
+                </div>
+            </div>
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            In the code above, we are using Angular’s directives to set and read the active variable. When it changes, it causes the HTML that uses it to be updated automatically. In Angular’s terminology, this variable is called a model. It is available to all directives in the current scope, and can be accessed in your controllers (more on that in the next example).
+             </p>
+
+        <p>
+            If you have used JavaScript templates before, you are familiar with the {{var}} syntax. When the framework sees such a string, it replaces it with the contents of the variable. This operation is repeated every time var is changed.
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre> nav class="{{active}}" ng-click="$event.preventDefault()"</br>
+                        <!-- When a link in the menu is clicked, we set the active variable --></br>
+                a href="#" class="home" ng-click="active='home'">Home</a></br>
+                a href="#" class="projects" ng-click="active='projects'">Projects</a></br>
+                a href="#" class="services" ng-click="active='services'">Services</a></br>
+                a href="#" class="contact" ng-click="active='contact'">Contact</a></br>
+                      </pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/Angular/FourthAngular.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>
