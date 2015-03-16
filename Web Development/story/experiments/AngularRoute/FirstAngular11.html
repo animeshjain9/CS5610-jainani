@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script type="text/javascript">
+        //Define an angular module for our app
+        var sampleApp = angular.module('sampleApp', []);
+
+        //Define Routing for app
+        //Uri /AddNewOrder -> template AddOrder.html and Controller AddOrderController
+        //Uri /ShowOrders -> template ShowOrders.html and Controller AddOrderController
+        sampleApp.config(['$routeProvider',
+          function ($routeProvider) {
+              $routeProvider.
+                when('/AddNewOrder', {
+                    templateUrl: 'add_order.html',
+                    controller: 'AddOrderController'
+                }).
+                when('/ShowOrders', {
+                    templateUrl: 'show_orders.html',
+                    controller: 'ShowOrdersController'
+                }).
+                otherwise({
+                    redirectTo: '/AddNewOrder'
+                });
+          }]);
+
+
+        sampleApp.controller('AddOrderController', function ($scope, $http) {
+
+            $scope.message = 'This is the page where user can order things and add more things in the inventory';
+
+        });
+
+
+        sampleApp.controller('ShowOrdersController', function ($scope, $http) {
+
+            $scope.message = 'This is the page where user can view the things which has been ordered already';
+
+        });
+    </script>
+</head>
+<body ng-app="sampleApp" class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>Advanced AngularJS Experiments 1</h1>
+            <h2 align="center">AngularJS Routing Part 1</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav">
+                            <li><a href="#AddNewOrder"> Add New Order </a></li>
+                            <li><a href="#ShowOrders"> Show Order </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div ng-view></div>
+                    </div>
+
+                </div>
+
+            </div><!-- /.container -->
+            <script type="text/ng-template" id="add_order.html">
+
+                <h2> Add Order </h2>
+                {{message}}
+
+            </script>
+
+            <script type="text/ng-template" id="show_orders.html">
+
+                <h2> Show Orders </h2>
+                {{message}}
+
+            </script>
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            We first use .config() method to define $routeProvider configuration. Also in the same file we define two controllers AddOrderController and ShowOrdersController. In a real world application these controllers will hold a lot of logic but for example sake we just define a message property on $scope which later we use to display on view.
+            Notice how we used otherwise() method to define a default route. In case routeProvider does not matche with any url, it redirects to default route.
+        </p>
+
+        <p>
+            Our app.js is ready. We still needs to define two html templates. These are partial templates of our app.
+            add_order.html template should have an html form for adding new orders. For sake of simplicity we just show a message.
+
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre> div class="container"<br/>
+                    div class="row"<br />
+                    div class="col-md-3"<br />
+                    ul class="nav"<br />
+                    li>a href="#AddNewOrder"> Add New Order </a></li <br/>
+                    li>a href="#ShowOrders"> Show Order </a></li <br/>
+                        ul<br />
+                    /div<br />
+                    div class="col-md-9"<br />
+                    div ng-view div<br />
+                    div <br />
+                div<br />
+            div<br />
+                </br></br></pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/AngularRoute/FirstAngular.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

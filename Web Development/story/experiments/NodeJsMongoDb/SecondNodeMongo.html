@@ -23,6 +23,9 @@
         }
 
         div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
         }
 
         h2 {
@@ -138,86 +141,47 @@
             width: 200px;
             background-color: #ccc;
         }
-       
     </style>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script src="/javascript/app1.js"></script>
 </head>
-<body ng-app="sampleApp_route" class="main-wrapper" id="centered">
+<body class="main-wrapper" id="centered">
 
     <div class="main-wrapper" id="centered">
         <div>
-            <h1>Advanced AngularJS Experiments 2</h1>
-            <h2 align="center">AngularJS Routing Part II</h2>
-           <div class="container">
-		<div class="row">
-
-		<div class="col-md-9">
-
-		<table class="table table-striped">
-			<thead>
-			  <tr>
-				<th>#</th><th>Order No.</th><th>Details</th><th></th>
-			  </tr>
-			</thead>
-			<tbody>
-			  <tr>
-				<td>1</td><td>1234</td><td>15" Samsung Laptop</td>
-				<td><a href="#ShowOrder/1234">show details</a></td>
-			  </tr>
-			  <tr>
-				<td>2</td><td>5412</td><td>2TB Seagate Hard drive</td>
-				<td><a href="#ShowOrder/5412">show details</a></td>
-			  </tr>
-			  <tr>
-				<td>3</td><td>9874</td><td>D-link router</td>
-				<td><a href="#ShowOrder/9874">show details</a></td>
-			  </tr>
-			</tbody>
-		  </table>
-
-
-		  	<div ng-view></div>
-
-		</div>
-
-		</div>
-
-    </div><!-- /.container -->
+            <h1>NodeJs and MongoDB Experiment 2</h1>
+            <h2 align="center">User Information System - GET Request to return JSON that list all users in database </h2>
+            <a href="http://cs5610-animeshjain.rhcloud.com">Link to the Experiment</a>
+            <!-- /.container -->
         </div>
         </br>
         <h4 align="Center">About the Experiment</h4>
         <p>
-            We want to display details of different orders. Based on a parameter order_id we will define order details in view.In angular while define route we can define parameters using orderId in url.
-        </p>
+            Now it's time to move on to routing. Note that Express auto-creates a /users route file. We're going to make use of that, but we won't be creating any views for it. Why? Well, because since this is a single-page app, we're using the Index route and view for display purposes. We're going to use the user route to set up our data I/O … the services we want to create to show, add, and delete users from our database. We'll access these with JavaScript, rather than navigating to them in a browser, and display the collected data on the index page.
+            The purpose of this code is: if you do an HTTP GET to /users/userlist, our server will return JSON that lists all of the users in the database. Obviously for a large-scale project you'd want to put in limits as to how much data gets spewed out at one time, for example by adding paging to your front-end, but for our purposes this is fine. </p>
 
         <p>
-            And we can read the parameter in ShowOrderController by using $routeParams.orderId. It contains order information data in tabular format. Each order has a “show details” link. This link uses parametrize route url to load order detail screen.
-            Don’t forget to inject $routeParam parameter in controller. Otherwise you wont be able to use it.
-
         </p>
 
         <h4 align="Center"> Code Snippet</h4>
 
-        <pre> div class="container" <br/>
-div class="row"<br />
-div class="col-md-9"<br />
-table class="table table-striped"<br />
-thead<br />
-tr<br />
-th#</th><th>Order No.</th><th>Details</th><th></th><br />
-td>115" Samsung Laptop</td
-td>a href="#ShowOrder/1234">show details/a</td
-td>2</td><td>5412</td><td>2TB Seagate Hard drive</td
-td>a href="#ShowOrder/5412"show details</a></td<br />
-<td>3</td><td>9874</td><td>D-link router</td><br />
-<td>a href="#ShowOrder/9874"show details</a></td><br />
+        <pre> var express = require('express');</br>
+              var router = express.Router();</br>
+                /*</br>
+                 * GET userlist.</br>
+                 */</br>
+            router.get('/userlist', function(req, res) {</br>
+            var db = req.db;</br>
+            db.collection('userlist').find().toArray(function (err, items) {</br>
+             res.json(items);</br>
+            });</br>
+            });</br>
+            module.exports = router;</br>
+        
                 </br></br></pre>
 
 
         <h2 align="Center">Source Code</h2>
-        <a href="../../../fileview/Default.aspx?~/story/experiments/AngularRoute/SecondAngular.html" target="_blank">View Source</a>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/NodeJsMongoDb/SecondNode.js" target="_blank">View Source</a>
 
         <hr />
 

@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+
+</head>
+<body class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>NodeJs and MongoDB Experiment 3</h1>
+            <h2 align="center">User Information System - Populating User Info</h2>
+            <a href="http://cs5610-animeshjain.rhcloud.com">Link to the Experiment</a>
+            <!-- /.container -->
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            What this is doing is sticking all of our returned user data, from the database, into our global variable, so that we can access it without repeatedly whaling on the database each time we click a name in our table. I want to be clear here: for large-scale operations, this is not a great idea. You would not want to do this if you were loading tens of thousands of users at once (but you probably wouldn't want to load tens of thousands of users at once, either). You'd want to implement paging, and only load the data you really needed at any given time.
+            Here's what we're doing: first we're using .map to apply a function to each object in our userListData array. This will spit out a brand new array containing only whatever the function returns. That function (the anonymous callback function using the userObj parameter) strictly returns the username. So, basically, if our original data array contained two complete user objects, then the array returned by our use of .map here would only contain usernames, and look like this: ['Bob', 'Sue'].
+            So once we have THAT array, provided by .map, we're chaining indexOf, in combination with the username of our choice, to get the array index of that username. So Bob would be zero, and Sue would be one. We can then use that number, stored as arrayPosition, to go back to our original user data array and start pulling data
+            </p>
+
+        <p>
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre>
+    function showUserInfo(event) {</br>
+    // Prevent Link from Firing</br>
+    event.preventDefault();</br>
+    // Retrieve username from link rel attribute</br>
+    var thisUserName = $(this).attr('rel');</br>
+    // Get Index of object based on id value</br>
+    var arrayPosition = userListData.map(function(arrayItem) { return arrayItem.username; }).indexOf(thisUserName);</br>
+    // Get our User Object</br>
+    var thisUserObject = userListData[arrayPosition];</br>
+    //Populate Info Box</br>
+    $('#userInfoName').text(thisUserObject.fullname);</br>
+    $('#userInfoAge').text(thisUserObject.age);</br>
+    $('#userInfoGender').text(thisUserObject.gender);</br>
+    $('#userInfoLocation').text(thisUserObject.location);</br>
+</pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/NodeJsMongoDb/ThirdNode.js" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

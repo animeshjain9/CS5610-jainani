@@ -23,6 +23,9 @@
         }
 
         div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
         }
 
         h2 {
@@ -139,65 +142,49 @@
             background-color: #ccc;
         }
     </style>
-   
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script src="/javascript/app.js"></script>
+
 </head>
-<body ng-app="sampleApp" class="main-wrapper" id="centered">
+<body class="main-wrapper" id="centered">
 
     <div class="main-wrapper" id="centered">
         <div>
-            <h1>Advanced AngularJS Experiments 1</h1>
-            <h2 align="center">AngularJS Routing Part 1</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <ul class="nav">
-                            <li><a href="#AddNewOrder"> Add New Order </a></li>
-                            <li><a href="#ShowOrders"> Show Order </a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-9">
-                        <div ng-view></div>
-                    </div>
-
-                </div>
-
-            </div><!-- /.container -->
+            <h1>NodeJs and MongoDB Experiment 1</h1>
+            <h2 align="center">Node JS and Mongo DB Setup</h2>
+            <a href="http://cs5610-animeshjain.rhcloud.com/hello">Link to the Experiment</a>
+            <!-- /.container -->
         </div>
         </br>
         <h4 align="Center">About the Experiment</h4>
         <p>
-            We first use .config() method to define $routeProvider configuration. Also in the same file we define two controllers AddOrderController and ShowOrdersController. In a real world application these controllers will hold a lot of logic but for example sake we just define a message property on $scope which later we use to display on view.
-            Notice how we used otherwise() method to define a default route. In case routeProvider does not matche with any url, it redirects to default route.
+            This the preliminary setup for nodejs and express library. Node.js is an open source, cross-platform runtime environment for server-side and networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows, Linux, FreeBSD, and IBM i. Node.js provides an event-driven architecture and a non-blocking I/O API that optimizes an application's throughput and scalability. These technologies are commonly used for real-time web applications. Node.js uses the Google V8 JavaScript engine to execute code, and a large percentage of the basic modules are written in JavaScript. Node.js contains a built-in library to allow applications to act as a Web server without software such as Apache HTTP Server or IIS
         </p>
 
         <p>
-            Our app.js is ready. We still needs to define two html templates. These are partial templates of our app.
-            add_order.html template should have an html form for adding new orders. For sake of simplicity we just show a message.
-
         </p>
 
         <h4 align="Center"> Code Snippet</h4>
 
-        <pre> div class="container"<br/>
-                    div class="row"<br />
-                    div class="col-md-3"<br />
-                    ul class="nav"<br />
-                    li>a href="#AddNewOrder"> Add New Order </a></li <br/>
-                    li>a href="#ShowOrders"> Show Order </a></li <br/>
-                        ul<br />
-                    /div<br />
-                    div class="col-md-9"<br />
-                    div ng-view div<br />
-                    div <br />
-                div<br />
-            div<br />
+        <pre>  var express = require('express')</br>
+        var app = express()</br>
+        var host = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';</br>
+        var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;</br>
+        app.get('/', function (req, res) {</br>
+            res.send('Hello World!')</br>
+        })</br>
+        var server = app.listen(3000, host, function () {</br>
+            console.log('Example app listening at http://%s:%s', host, port)</br>
+        })</br>
+
+            // Database</br>
+        var mongo = require('mongoskin');</br>
+        var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || "mongodb://localhost:27017/nodetest2";</br>
+        var db = mongo.db(connectionString, {native_parser:true});</br>
+        
                 </br></br></pre>
 
 
         <h2 align="Center">Source Code</h2>
-        <a href="../../../fileview/Default.aspx?~/story/experiments/AngularRoute/FirstAngular.html" target="_blank">View Source</a>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/NodeJsMongoDb/FirstNode.js" target="_blank">View Source</a>
 
         <hr />
 

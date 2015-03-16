@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+
+</head>
+<body class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>NodeJs and MongoDB Experiment 4</h1>
+            <h2 align="center">User Information System - Adding Users</h2>
+            <a href="http://cs5610-animeshjain.rhcloud.com">Link to the Experiment</a>
+            <!-- /.container -->
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            The first thing we'll need a set of form fields with which to add a new user.Adding a user is really not too difficult. It's very similar to retrieving user info, except you're doing an insert() to the database instead of a find(). This basically just says “we're going to post some data (req.body), and you're going to insert it into our ‘userlist' collection in the database. If that goes well, return an empty string. If it goes poorly, return the error message that the database gives us.”
+            You'll note that we're calling an addUser function. Obviously, we'll need to build that function. This is going to be our largest single bit of code in this entire tutorial, because it's got quite a bit going on. It has to do some rudimentary form validation and then, if the form's all filled out, compile the data and POST it via AJAX to our adduser service. 
+        </p>
+
+        <p>
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre>
+
+      // Add the User in MongoDB <br />
+    router.post('/adduser', function(req, res) {<br />
+    var db = req.db;<br />
+    db.collection('userlist').insert(req.body, function(err, result){<br />
+        res.send(<br />
+            (err === null) ? { msg: '' } : { msg: err }<br />
+        );<br />
+    });<br />
+    });<br />
+
+
+     // Add User</br>
+    function addUser(event) {</br>
+    event.preventDefault();</br>
+    // Super basic validation - increase errorCount variable if any fields are blank</br>
+    var errorCount = 0;</br>
+    $('#addUser input').each(function(index, val) {</br>
+        if($(this).val() === '') { errorCount++; }</br>
+    });</br>
+    // Check and make sure errorCount's still at zero</br>
+    if(errorCount === 0) {</br>
+        // If it is, compile all user info into one object</br>
+        var newUser = {</br>
+            'username': $('#addUser fieldset input#inputUserName').val(),</br>
+            'email': $('#addUser fieldset input#inputUserEmail').val(),</br>
+            'fullname': $('#addUser fieldset input#inputUserFullname').val(),</br>
+            'age': $('#addUser fieldset input#inputUserAge').val(),</br>
+            'location': $('#addUser fieldset input#inputUserLocation').val(),</br>
+            'gender': $('#addUser fieldset input#inputUserGender').val()</br>
+        }</br>
+        // Use AJAX to post the object to our adduser service</br>
+        $.ajax({</br>
+            type: 'POST',</br>
+            data: newUser,</br>
+            url: '/users/adduser',</br>
+            dataType: 'JSON'</br>
+        }).done(function( response ) {</br>
+            // Check for successful (blank) response</br>
+            if (response.msg === '') {</br>
+                // Clear the form inputs</br>
+                $('#addUser fieldset input').val('');</br>
+                // Update the table</br>
+                populateTable();</br>
+            }</br>
+            else {</br>
+                // If something goes wrong, alert the error message that our service returned</br>
+                alert('Error: ' + response.msg);</br>
+            }</br>
+        });</br>
+    }</br>
+    else {</br>
+        // If errorCount is more than 0, error out</br>
+        alert('Please fill in all fields');</br>
+        return false;</br>
+    }</br>
+};</br>
+</pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/NodeJsMongoDb/FourthNode.js" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

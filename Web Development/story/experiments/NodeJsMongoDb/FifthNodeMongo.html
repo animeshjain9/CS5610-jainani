@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+
+</head>
+<body class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>NodeJs and MongoDB Experiment 5</h1>
+            <h2 align="center">User Information System - Deleting Users</h2>
+            <a href="http://cs5610-animeshjain.rhcloud.com">Link to the Experiment</a>
+            <!-- /.container -->
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>This is pretty straightforward – we pass in an ID parameter (so the URI we'll be referencing will be /deleteuser/12345 for example, and we reference it in the code with req.params.id), and MongoDB matches it up with the unique _id field that it generates for every entry in a collection, and nukes that entry from orbit. Just like our add user routine, if all goes well it returns a blank string, and if things don't work out it sends back the error message from MongoDB
+            when working with jQuery's ‘on' method, in order to capture dynamically inserted links, you need to reference a static element on the page first. That's why our selector is the table's tbody element – which remains constant regardless of adding or removing users – and then we're specifying the specific links we're trying to catch in the .on parameters.
+            </p>
+
+        <p>
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre>
+        // Deleting the User from Mongo DB</br>
+        router.delete('/deleteuser/:id', function(req, res) {</br>
+        var db = req.db;</br>
+        var userToDelete = req.params.id;</br>
+        db.collection('userlist').removeById(userToDelete, function(err, result) {</br>
+        res.send((result === 1) ? { msg: '' } : { msg:'error: ' + err });</br>
+    });</br>
+});</br>
+
+
+     // Delete User</br>
+    function deleteUser(event) {</br>
+    event.preventDefault();</br>
+    // Pop up a confirmation dialog</br>
+    var confirmation = confirm('Are you sure you want to delete this user?');</br>
+    // Check and make sure the user confirmed</br>
+    if (confirmation === true) {</br>
+        // If they did, do our delete</br>
+        $.ajax({</br>
+            type: 'DELETE',</br>
+            url: '/users/deleteuser/' + $(this).attr('rel')</br>
+        }).done(function( response ) {</br>
+            // Check for a successful (blank) response</br>
+            if (response.msg === '') {</br>
+            }</br>
+            else {</br>
+                alert('Error: ' + response.msg);</br>
+            }</br>
+            // Update the table</br>
+            populateTable();</br>
+        });</br>
+    }</br></br>
+    else {</br>
+        // If they said no to the confirm, do nothing</br>
+        return false;</br>
+    }</br>
+};</br>
+</pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/NodeJsMongoDb/FifthNode.js" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

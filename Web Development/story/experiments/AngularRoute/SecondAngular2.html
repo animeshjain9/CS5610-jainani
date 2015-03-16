@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+       
+    </style>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script type="text/javascript">
+            var sampleApp = angular.module('sampleApp_route', []);
+
+            sampleApp.config(['$routeProvider',
+              function ($routeProvider) {
+                  $routeProvider.
+                    when('/ShowOrder/:orderId', {
+                        templateUrl: 'show_order1.html',
+                        controller: 'ShowOrderController'
+                    });
+              }]);
+
+
+            sampleApp.controller('ShowOrderController', function ($scope, $routeParams) {
+
+
+                $scope.order_id = $routeParams.orderId;
+
+            });
+
+
+        </script>
+</head>
+<body ng-app="sampleApp_route" class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>Advanced AngularJS Experiments 2</h1>
+            <h2 align="center">AngularJS Routing Part II</h2>
+           <div class="container">
+		<div class="row">
+
+		<div class="col-md-9">
+
+		<table class="table table-striped">
+			<thead>
+			  <tr>
+				<th>#</th><th>Order No.</th><th>Details</th><th></th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td>1</td><td>1234</td><td>15" Samsung Laptop</td>
+				<td><a href="#ShowOrder/1234">show details</a></td>
+			  </tr>
+			  <tr>
+				<td>2</td><td>5412</td><td>2TB Seagate Hard drive</td>
+				<td><a href="#ShowOrder/5412">show details</a></td>
+			  </tr>
+			  <tr>
+				<td>3</td><td>9874</td><td>D-link router</td>
+				<td><a href="#ShowOrder/9874">show details</a></td>
+			  </tr>
+			</tbody>
+		  </table>
+
+
+		  	<div ng-view></div>
+
+		</div>
+
+		</div>
+
+    </div><!-- /.container -->
+            <script type="text/ng-template" id="show_order1.html">
+                <h2>Order #{{order_id}}</h2>
+
+                Here are the details for order
+                <b>#{{order_id}}</b>.
+            </script>
+</div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            We want to display details of different orders. Based on a parameter order_id we will define order details in view.In angular while define route we can define parameters using orderId in url.
+        </p>
+
+        <p>
+            And we can read the parameter in ShowOrderController by using $routeParams.orderId. It contains order information data in tabular format. Each order has a “show details” link. This link uses parametrize route url to load order detail screen.
+            Don’t forget to inject $routeParam parameter in controller. Otherwise you wont be able to use it.
+
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre> div class="container" <br/>
+div class="row"<br />
+div class="col-md-9"<br />
+table class="table table-striped"<br />
+thead<br />
+tr<br />
+th#</th><th>Order No.</th><th>Details</th><th></th><br />
+td>115" Samsung Laptop</td
+td>a href="#ShowOrder/1234">show details/a</td
+td>2</td><td>5412</td><td>2TB Seagate Hard drive</td
+td>a href="#ShowOrder/5412"show details</a></td<br />
+<td>3</td><td>9874</td><td>D-link router</td><br />
+<td>a href="#ShowOrder/9874"show details</a></td><br />
+                </br></br></pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/AngularRoute/SecondAngular.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>
