@@ -3,4 +3,7 @@ SecondHTML.htm		 2. CSS and JavaScript Experiments
 ThirdHTML.htm		 3. JQuery and BootStrap Experiments
 FourthHTML.htm		 4. Angular Experiments
 FifthHTML.htm		 5. Advanced Angular Experiments
-SixthHTML.htm		 6. and 7. NodeJs MongoDB Experiments
+SixthHTML.htm		 6. NodeJs Experiments
+SeventhHTML.htm      7. MongoDb Experiments
+EightHTML.htm		 8. Passport Project Experiments
+NinethHTML.htm		 9. Project Experiments Part 1

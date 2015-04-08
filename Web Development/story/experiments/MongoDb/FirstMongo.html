@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #a1a1a1;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: mintcream;
+            color: #808080;
+            font-size: 1.0em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #ffffff;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+
+</head>
+<body class="main-wrapper" id="centered">
+
+    <div class="main-wrapper" id="centered">
+        <div>
+            <h1>MongoDB Experiment 1</h1>
+            <h2 align="center">Mongoose setup and Home Page</h2>
+            <a href="http://mongodb-getanim.rhcloud.com">Link to the Experiment</a>
+            <!-- /.container -->
+        </div>
+        </br>
+        <h4 align="Center">About the Experiment</h4>
+        <p>
+            MongoDB (from humongous) is a cross-platform document-oriented database. Classified as a NoSQL database, MongoDB eschews the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas (MongoDB calls the format BSON), making the integration of data in certain types of applications easier and faster. Released under a combination of the GNU Affero General Public License and the Apache License, MongoDB is free and open-source software.
+        </p>
+
+        <p>
+        </p>
+
+        <h4 align="Center"> Code Snippet</h4>
+
+        <pre>
+                    /**</br>
+ * Module dependencies.</br>
+ */</br>
+var express = require('express');</br>
+ var routes = require('./routes');</br>
+ var user = require('./routes/user');</br>
+ var http = require('http');</br>
+ var path = require('path');</br>
+var app = express();</br>
+// all environments</br>
+ app.set('port', process.env.PORT || 3000);</br>
+ app.set('views', __dirname + '/views');</br>
+ app.set('view engine', 'jade');</br>
+ app.use(express.favicon());</br>
+ app.use(express.logger('dev'));</br>
+ app.use(express.bodyParser());</br>
+ app.use(express.methodOverride());</br>
+ app.use(app.router);</br>
+ app.use(express.static(path.join(__dirname, 'public')));</br>
+// development only</br>
+ if ('development' == app.get('env')) {</br>
+ app.use(express.errorHandler());</br>
+ }</br>
+app.get('/', routes.index);</br>
+ app.get('/users', user.list);</br>
+http.createServer(app).listen(app.get('port'), function(){</br>
+ console.log('Express server listening on port ' + app.get('port'));</br>
+ });</br>
+</pre>
+
+
+        <h2 align="Center">Source Code</h2>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/MongoDb/FirstMongo.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2 align="Center">References</h2>
+        <a href="https://www.mongodb.org/" target="_blank">MongoDb</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>
