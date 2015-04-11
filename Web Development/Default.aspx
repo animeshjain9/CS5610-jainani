@@ -9,20 +9,14 @@
 <html lang="en">
 
 <head>
+    <meta charset='utf-8' />
+    
+    <title>Demo Home Page</title>
 
-<script type="text/javascript" src="javascript/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="javascript/modernizr.custom.79639.js"></script>
     <link rel="stylesheet" type="text/css" href="css/normal.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script type="text/javascript" src="javascript/script.js"></script>
-
-
-
-<meta charset='utf-8' />
-
-<title>Demo Home Page</title>
-
-
-
 
 
 </head>
@@ -46,20 +40,20 @@
                 <ul id="navigationMenu">
 
                    <li>
-                       <a href="sitestatistics/" target="_blank">SiteStatistics  </a>
+                       <a href="sitestatistics/" target="_blank" class="normalMenu">SiteStatistics  </a>
                    </li><li>
-                       <a href="statistics/" target="_blank">Statistics  </a>
+                       <a href="statistics/" target="_blank" class="normalMenu">Statistics  </a>
                    </li><li>
-                            <a href="source/" target="_blank">Source  </a></li>
-                   <li><a href="search/" target="_blank">Search  </a></li>
-                   <li><a href="searchtree/" target="_blank">SearchTree  </a></li>
-                   <li><a href="textview/" target="_blank">TextView  </a></li>
-                   <li><a href="filelist.aspx" target="_blank">FileList  </a></li>
-                   <li><a href="autofile.aspx" target="_blank">AutoFile  </a></li>
-                   <li><a href="images/autoimage.aspx" target="_blank">Images  </a></li>
-                   <li><a href="blog/" target="_blank">Blog  </a></li>
-                   <li><a href="story/index.htm" target="_blank">Experiments  </a></li>
-                   <li><a href="https://github.com/animeshjain9/CS5610-jainani" target="_blank">Github link  </a></li>
+                            <a href="source/" target="_blank" class="normalMenu">Source  </a></li>
+                   <li><a href="search/" target="_blank" class="normalMenu">Search  </a></li>
+                   <li><a href="searchtree/" target="_blank" class="normalMenu">SearchTree  </a></li>
+                   <li><a href="textview/" target="_blank" class="normalMenu">TextView  </a></li>
+                   <li><a href="filelist.aspx" target="_blank" class="normalMenu">FileList  </a></li>
+                   <li><a href="autofile.aspx" target="_blank" class="normalMenu">AutoFile  </a></li>
+                   <li><a href="images/autoimage.aspx" target="_blank" class="normalMenu">Images  </a></li>
+                   <li><a href="blog/" target="_blank" class="normalMenu">Blog  </a></li>
+                   <li><a href="story/index.htm" target="_blank" class="normalMenu">Experiments  </a></li>
+                   <li><a href="https://github.com/animeshjain9/CS5610-jainani" target="_blank" class="normalMenu">Github link  </a></li>
                 </ul>
                 </center>
                 </div>
@@ -81,7 +75,7 @@
                     <div class="content">
                         <div class="outer-border">
                             <div class="feature-image">
-                                <img src="images/profile.jpeg" class="fluid" />
+                                <img src="images/profile.jpg" class="fluid" />
                             </div>
                         </div>
                         <hr />
@@ -94,7 +88,7 @@
                         <div class="header">
                             <h4>About Me</h4>
                             <p>I am a graduate student at College of Computer & Information Science at Northeastern University. I am building this website as part of CS 5610, Web Development Course under the guidence of Professor Jose & Professor Rasala. </p>
-                            <p>I come from the beautiful city of Mumbai, India. Apart from studying, I love travelling to new destinations. Travelling is a fascinating way to discover and know the new place, culture.</p>
+                            <p>I come from the beautiful city of Kota, India. Apart from studying, I love travelling to new destinations. Travelling is a fascinating way to discover and know the new place, culture.</p>
                             <p></p>
                         </div>
 
@@ -112,14 +106,16 @@
                             <li>Javascript</li>
                             <li>CSS3</li>
                             <li>jOuery</li>
-                            <li>SQL Server</li>
+                            <li>Node JS</li>
+                            <li>Mongo DB</li>
+
                         </ul>
                         <hr />
                         <h4><strong>References: </strong></h4>
                         <ul style="list-style-type: none">
-                            <li><a href="http://net4.ccs.neu.edu/home/jga/" target="_blank"><u>Prof Jose's Page</u></a></li>
+                            <li><a href="https://github.com/jannunzi/dev/tree/master/neu/cs5610/BackBone" target="_blank"><u>Prof Jose's Github Site</u></a></li>
                             <li><a href="http://net4.ccs.neu.edu/home/rasala/" target="_blank"><u>Prof Rasala's Page</u></a></li>
-                            <li><a href="http://net4.ccs.neu.edu/home/rasala/2014Spring/" target="_blank"><u>CS 5610 Home</u></a></li>
+                            <li><a href="http://net4.ccs.neu.edu/home/rasala/2015Spring/" target="_blank"><u>CS 5610 Home</u></a></li>
                             <li><a href="http://www.w3schools.com/" target="_blank"><u>W3Schools Tutorials</u></a></li>
                         </ul>
                         <br />

@@ -165,18 +165,18 @@
 
         <pre>
                                //The API    </br>
-         var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search" +  </br> </br>
-            "&api_key=0bcb83ff690fc97e1d42f6e6c8d2a89e&tags=pottery&per_page=10&format=json&nojsoncallback=?"; </br>
-        //The rendering for the angular </br>
-                shoppingApp.controller("ShoppingController", ["$scope", "$http", "ShoppingCartService", function($scope, $http, ShoppingCartService) {
-	$scope.renderInClient = function(data) { </br>
-		$scope.photos = []; </br>
-		console.log("Entered"); </br>
-            		 </br>
-		console.log(JSON.stringify(data)); </br>
-		for(each object){ </br>
+         var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search" +  </br>
+         "&api_key=0bcb83ff690fc97e1d42f6e6c8d2a89e&tags=pottery&per_page=10&format=json&nojsoncallback=?"; </br>
+          shoppingApp.controller("ShoppingController", ["$scope", "$http", "ShoppingCartService", </br>
+            function($scope, $http, ShoppingCartService) {</br>
+	        $scope.renderInClient = function(data) { </br>
+		    $scope.photos = []; </br>
+		    console.log("Entered"); </br>
+		    console.log(JSON.stringify(data)); </br>
+		    for(each object){ </br>
                 var photo=data.photos.photo[i]; /> </br>
-                var details_url = "https://farm" +photo.farm+ ".staticflickr.com/" +photo.server+ "/" +photo.id+ "_" +photo.secret+ ".jpg"; </br>
+                var details_url = "https://farm" +photo.farm+ ".staticflickr.com/" </br>
+                                   +photo.server+ "/" +photo.id+ "_" +photo.secret+ ".jpg"; </br>
                 var owner_url = "http://www.flickr.com/photos/" + photo.owner + "/" + photo.id; </br>
                 var pic = { </br>
                 	photo : details_url, </br>
@@ -192,7 +192,7 @@
 
 
         <h2 align="Center">Source Code</h2>
-        <a href="../../../fileview/Default.aspx?~/story/experiments/Project/Project1.html" target="_blank">View Source</a>
+        <a href="../../../fileview/Default.aspx?~/story/experiments/Project1/Project1.html" target="_blank">View Source</a>
 
         <hr />
 

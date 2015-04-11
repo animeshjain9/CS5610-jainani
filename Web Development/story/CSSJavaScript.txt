@@ -2,4 +2,4 @@
 experiments/CSSJavaScript/SecondCSSJavaScriptExp.html		Second CSS and JavaScript Experiment
 experiments/CSSJavaScript/ThirdCSSJavaScriptExp.html		Third CSS and JavaScript Experiment
 experiments/CSSJavaScript/FourthCSSJavaScriptExp.html		Fourth CSS and JavaScript Experiment
-experiments/CSSJavaScript/FiftheCSSJavaScriptExp.html		Fifth CSS and JavaScript Experiment
+experiments/CSSJavaScript/FifthCSSJavaScriptExp.html		Fifth CSS and JavaScript Experiment
